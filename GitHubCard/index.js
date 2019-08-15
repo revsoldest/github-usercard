@@ -4,14 +4,14 @@
 */
 
 const gitCard = document.querySelector('.cards');
-
+ 
 axios.get('https://api.github.com/users/revsoldest')
   .then((data) => {
     console.log('GitApiData:', data)
     gitCard.appendChild(githubCard(data));
   })
-  .catch((error) => {
-    console.log('The github API is currently down, try again later', error)
+  .catch((error0) => {
+    console.log('The github API is currently down, try again later', error0)
   });
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -35,7 +35,22 @@ axios.get('https://api.github.com/users/revsoldest')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['wtrawlings', 'AllieRobinson', 'Amber-Pittman', 'nezlobnaya', 'raythurman2386','dswhitely1'];
+
+followersArray.forEach(i => {
+  axios.get('https://api.github.com/users/' + [i])
+  .then((data) => {
+   gitCard.appendChild(githubCard(data));
+   })
+   .catch( (error1) => {
+    console.log('The github API is currently down for classmates, try again later', error1)
+})
+})
+
+
+
+
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
