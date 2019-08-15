@@ -3,8 +3,13 @@
            https://api.github.com/users/<your name>
 */
 
-const test = axios.get(`https://api.github.com/users/revsoldest`)
-console.log(test)
+axios.get(`https://api.github.com/users/revsoldest`)
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => {
+    console.log('The github API is currently down, try again later', error)
+  })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
