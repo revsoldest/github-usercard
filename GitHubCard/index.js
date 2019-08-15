@@ -75,11 +75,35 @@ function githubCard(object) {
   infoHeader.textContent = object.data.name;
   info.appendChild(infoHeader);
 
-const user = document.createElement('p');
-user.classList.add('username');
-user.textContent = object.data.login;
-info.appendChild(user);
+  const user = document.createElement('p');
+  user.classList.add('username');
+  user.textContent = object.data.login;
+  info.appendChild(user);
 
+  const location = document.createElement('p');
+  location.textContent = `Location: ${object.data.location}`
+  info.appendChild(location);
+
+  const profile = document.createElement('p');
+  profile.textContent = 'Profile:';
+  info.appendChild(profile);
+
+  const profileLink = document.createElement('a');
+  profileLink.href = object.data.html_url;
+  profileLink.textContent = ` ${object.data.html_url}`
+  profile.appendChild(profileLink);
+
+  const followers = document.createElement('p');
+  followers.textContent = `Followers: ${object.data.followers}`
+  info.appendChild(followers);
+
+  const following = document.createElement('p');
+  following.textContent = `Following: ${object.data.following}`
+  info.appendChild(following);
+
+  const bio = document.createElement('p');
+  bio.textContent = `Bio: ${object.data.bio}`
+  info.appendChild(bio);
 
 
 
