@@ -10,11 +10,11 @@ axios.get('https://api.github.com/users/revsoldest')
     console.log('GitApiData:', data)
     gitCard.appendChild(githubCard(data));
   })
-   .catch((error) => {
-     console.log('The github API is currently down, try again later', error)
-   });
+  .catch((error) => {
+    console.log('The github API is currently down, try again later', error)
+  });
 
-  /* Step 2: Inspect and study the data coming back, this is YOUR 
+/* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
 
@@ -65,6 +65,22 @@ function githubCard(object) {
   const img = document.createElement('img');
   img.src = object.data.avatar_url;
   card.appendChild(img);
+
+  const info = document.createElement('div');
+  info.classList.add('card-info');
+  card.appendChild(info);
+
+  const infoHeader = document.createElement('h3');
+  infoHeader.classList.add('name');
+  infoHeader.textContent = object.data.name;
+  info.appendChild(infoHeader);
+
+const user = document.createElement('p');
+user.classList.add('username');
+user.textContent = object.data.login;
+info.appendChild(user);
+
+
 
 
 
